@@ -1,4 +1,4 @@
-import { View, Button, StyleSheet, AsyncStorage, FlatList } from "react-native";
+import { View, StyleSheet, AsyncStorage, FlatList, Image } from "react-native";
 import React, { Component } from "react";
 import firebase from "firebase";
 import {
@@ -14,45 +14,79 @@ import {
   CardItem,
   Text,
   Left,
-  Thumbnail
+  Thumbnail,
+  Content,
+  Button,
+  Right
 } from "native-base";
 
 const data = [
   {
     id: "00",
-    name: "Skyrim",
+    name: "Wolrd of Warcraft",
     mestre: "Felipe",
-    img_mestre: require("../../img/pp.jpeg")
+    img_mestre: require("../../img/pp.jpeg"),
+    img_mesa: require("../../img/wow.jpg")
   },
   {
     id: "01",
-    name: "League of Legends",
-    mestre: "Batata",
-    img_mestre: require("../../img/pp.jpeg")
+    name: "Star Craft",
+    mestre: "Felipe",
+    img_mestre: require("../../img/pp.jpeg"),
+    img_mesa: require("../../img/sc2.jpg")
   },
   {
     id: "03",
-    name: "batata",
-    mestre: "Batata",
-    img_mestre: require("../../img/pp.jpeg")
+    name: "The Elder Scrolls Online",
+    mestre: "Laura",
+    img_mestre: require("../../img/Laura.jpeg"),
+    img_mesa: require("../../img/skyrim.jpg")
   }
 ];
 
-const Index = ({ ListaDeMesas }) =>
-  ListaDeMesas.map(mesa => (
-    <Card key={mesa.id}>
-      <CardItem>
-        <Left>
-          <Thumbnail source={mesa.img_mestre} />
+const Index = ({ ListaDeMesas }) => (
+  <Content>
+    {ListaDeMesas.map(mesa => (
+      <Card key={mesa.id}>
+        <CardItem>
+          <Left>
+            <Thumbnail source={mesa.img_mestre} />
 
+            <Body>
+              <Text>{mesa.name}</Text>
+              <Text note>{mesa.mestre}</Text>
+            </Body>
+          </Left>
+        </CardItem>
+        <CardItem cardBody>
+          <Image
+            source={mesa.img_mesa}
+            style={{ height: 200, width: null, flex: 1 }}
+          ></Image>
+        </CardItem>
+        <CardItem>
+          <Left>
+            <Button transparent>
+              <Icon active name="thumbs-up">
+                <Text>Teste</Text>
+              </Icon>
+            </Button>
+          </Left>
           <Body>
-            <Text>{mesa.name}</Text>
-            <Text note>{mesa.mestre}</Text>
+            <Button transparent>
+              <Icon active name="chatbubbles">
+                <Text>Teste</Text>
+              </Icon>
+            </Button>
           </Body>
-        </Left>
-      </CardItem>
-    </Card>
-  ));
+          <Right>
+            <Text note>7:40</Text>
+          </Right>
+        </CardItem>
+      </Card>
+    ))}
+  </Content>
+);
 
 export default class Home extends Component {
   constructor(props) {

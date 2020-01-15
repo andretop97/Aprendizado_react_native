@@ -1,4 +1,11 @@
-import { View, StyleSheet, AsyncStorage, FlatList, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  AsyncStorage,
+  FlatList,
+  Image,
+  TouchableOpacity
+} from "react-native";
 import React, { Component } from "react";
 import firebase from "firebase";
 import {
@@ -143,7 +150,20 @@ export default class Home extends Component {
                   <Icon type="FontAwesome" name="cog"></Icon>
                 </TabHeading>
               }
-            ></Tab>
+            >
+              <Button
+                onPress={() => this.navegacao()}
+                style={{
+                  width: "40%",
+                  alignSelf: "center"
+                }}
+                icon
+                danger
+              >
+                <Icon type="FontAwesome5" name="sign-out-alt" />
+                <Text>SignOut</Text>
+              </Button>
+            </Tab>
           </Tabs>
         </View>
       </Container>

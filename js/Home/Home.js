@@ -33,7 +33,8 @@ const data = [
     name: "Wolrd of Warcraft",
     mestre: "Felipe",
     img_mestre: require("../../img/pp.jpeg"),
-    img_mesa: require("../../img/wow.jpg")
+    img_mesa: require("../../img/wow.jpg"),
+    descricao: "Mesa sobre o melhor game de todos os tempos"
   },
   {
     id: "01",
@@ -51,49 +52,45 @@ const data = [
   }
 ];
 
-const Index = ({ ListaDeMesas }) => (
+const Index = ({ ListaDeMesas, Press }) => (
   <Content>
     {ListaDeMesas.map(mesa => (
-      <Card key={mesa.id}>
-        <CardItem>
-          <Left>
-            <Thumbnail source={mesa.img_mestre} />
+      <TouchableOpacity onPress={Press}>
+        <Card key={mesa.id}>
+          <CardItem>
+            <Left>
+              <Thumbnail source={mesa.img_mestre} />
 
+              <Body>
+                <Text>{mesa.name}</Text>
+                <Text note>{mesa.mestre}</Text>
+              </Body>
+            </Left>
+          </CardItem>
+          <CardItem cardBody>
+            <Image
+              source={mesa.img_mesa}
+              style={{ height: 200, width: null, flex: 1 }}
+            ></Image>
+          </CardItem>
+          <CardItem>
             <Body>
-              <Text>{mesa.name}</Text>
-              <Text note>{mesa.mestre}</Text>
+              <Text>Descrição </Text>
+              <Text note>
+                {"  "}
+                {mesa.descricao}
+              </Text>
             </Body>
-          </Left>
-        </CardItem>
-        <CardItem cardBody>
-          <Image
-            source={mesa.img_mesa}
-            style={{ height: 200, width: null, flex: 1 }}
-          ></Image>
-        </CardItem>
-        <CardItem>
-          <Left>
-            <Button transparent>
-              <Icon active name="thumbs-up">
-                <Text>Teste</Text>
-              </Icon>
-            </Button>
-          </Left>
-          <Body>
-            <Button transparent>
-              <Icon active name="chatbubbles">
-                <Text>Teste</Text>
-              </Icon>
-            </Button>
-          </Body>
-          <Right>
-            <Text note>7:40</Text>
-          </Right>
-        </CardItem>
-      </Card>
+          </CardItem>
+        </Card>
+      </TouchableOpacity>
     ))}
   </Content>
 );
+
+const teste = () => {
+  console.log("batata");
+};
 
 export default class Home extends Component {
   constructor(props) {
@@ -135,7 +132,10 @@ export default class Home extends Component {
                 </TabHeading>
               }
             >
-              <Index ListaDeMesas={data} />
+              <Index
+                ListaDeMesas={data}
+                Press={() => this.props.navigation.navigate("Mesa")}
+              />
             </Tab>
             <Tab
               heading={

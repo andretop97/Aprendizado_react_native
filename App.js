@@ -3,7 +3,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import SignIn from "./js/Login/SignInScreen";
 import SignUp from "./js/Login/SignUpScreen";
-import HomeApp from "./js/Home/Home";
+import HomeApp from "./js/NavegacãoInterna";
 
 import * as firebase from "firebase";
 

@@ -75,6 +75,7 @@ export default class SignInScreen extends Component {
             placeholder="Senha"
             placeholderTextColor="#ffc107"
             onChangeText={Password => this.setState({ Password })}
+            secureTextEntry={true}
             value={this.state.Password}
           />
 

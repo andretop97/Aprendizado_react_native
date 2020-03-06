@@ -1,14 +1,62 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { Fragment } from "react";
+import { View, Text, SafeAreaView, StatusBar, ScrollView } from "react-native";
+import { Icon } from "native-base";
 
 const mesa = {
-  id: "asgdiuaid123",
-  Mestre: "Felipe",
-  Nome: "Word of Warcraft",
+  id: int,
+  Mestre: string,
+  Nome: string,
+  sessao: Date,
+  local: string,
+
   jogadores: [
     {
-      NomeJogador: "Andre",
-      NomePersonagem: "João Prodigio"
+      id: string,
+      jogador: string,
+      personagem: {
+        id: string,
+        nome: string,
+        classe: Enum,
+        raca: Enum,
+        experiencia: int,
+        nivel: int,
+        antecedente: string,
+
+        classeDeArmadura: int,
+        vida: int,
+        deslocamento: int,
+
+        proeficiencia: int,
+
+        forca: int,
+        proeficienciaForca: int,
+        modificadorForca: int,
+
+        destreza: int,
+        proeficienciaDestreza: int,
+        modificadorDestreza: int,
+
+        constituicao: int,
+        proeficienciaConstituicao: int,
+        modificadorConstituicao: int,
+
+        inteligencia: int,
+        proeficienciaInteligencia: int,
+        modificadorInteligencia: int,
+
+        sabedoria: int,
+        proeficienciaInteligencia: int,
+        modificadorInteligencia: int,
+        
+        
+
+        magiasConhecidas: [
+          {
+            id: int,
+            nome: string
+          }
+        ]
+      }
     },
     {
       NomeJogador: "Kamilla",
@@ -27,9 +75,17 @@ const mesa = {
 export default class Mesa extends React.Component {
   render() {
     return (
-      <View>
-        <Text>Batata</Text>
-      </View>
+      <Fragment>
+        <SafeAreaView style={{ flex: 0 }} />
+        <SafeAreaView style={{ flex: 1 }}>
+          <StatusBar backgroundColor={"#ffc107"} barStyle={"dark-content"} />
+          <ScrollView>
+            <View style={{ height: 60, backgroundColor: "#ffc107" }}>
+              <Icon type="FontAwesome" name="home" />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </Fragment>
     );
   }
 }

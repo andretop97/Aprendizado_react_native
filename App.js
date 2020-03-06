@@ -27,7 +27,7 @@ const Routes = createSwitchNavigator(
     Home: HomeApp
   },
   {
-    initialRouteName: "Login"
+    initialRouteName: "Home"
   }
 );
 
